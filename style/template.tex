@@ -4,7 +4,7 @@
 %! Project = IncResp Zusammenfassung
 
 
-\documentclass[a4paper, oneside, 10pt]{scrreprt}
+\documentclass[a4paper, oneside, 10pt]{scrartcl}
 
 % charset
 \usepackage[T1]{fontenc}
@@ -58,7 +58,6 @@
 %\setlength{\parindent}{0cm}
 
 % author and institute
-\newcommand{\AUTHOR}{J. Wolf, M. Zindel }
 \newcommand{\INSTITUTE}{Hochschule für Technik Rapperswil}
 
 % define header and footer
@@ -68,7 +67,6 @@
 \setkomafont{pagefoot}{\normalfont}
 
 \fancyhead[LO]{\nouppercase \leftmark}
-\fancyhead[RO]{\AUTHOR}
 \fancyfoot[CO]{\thepage}
 \renewcommand\headrulewidth{0.5pt}
 \renewcommand\footrulewidth{0.5pt}
@@ -106,8 +104,8 @@
 \makeatother
 
 % new section -> new page
-\let\stdchapter\chapter
-\renewcommand\chapter{\clearpage\stdchapter}
+% \let\stdchapter\chapter
+% \renewcommand\chapter{\clearpage\stdchapter}
 
 % import code listings
 \usepackage{listings}
