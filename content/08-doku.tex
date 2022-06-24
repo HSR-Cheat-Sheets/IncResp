@@ -1,0 +1,104 @@
+\section{Dokumentation}
+
+\subsection{Gründe für Dokumentation}
+\begin{itemize}
+    \item Fortlaufend den Überblick behalten
+    \item Entscheidungsfindung ermöglichen und unterstützen
+    \item Lessons Learned ermöglichen
+    \begin{itemize}
+        \item Was ist passiert?
+        \item Wer war wie und wann involviert?
+        \item Was wurde herausgefunden/festgestellt?
+        \item Welche Massnahmen wurden aus welchem Grund und wann umgesetzt?
+        \item Was kann man in Zukunft verbessern?
+    \end{itemize}
+\end{itemize}
+
+\subsection{Während dem Vorfall}
+\begin{itemize}
+    \item Generell immer:
+    \begin{itemize}
+        \item Zeitstempel des Zeitpunkts als es festgestellt/gefunden/dokumentiert wurde
+        \item Zeitstempel des Ereignisses selbst (wann hat es stattgefunden?)
+        \item Person, Ort des Fundes (System, Pfad, IP-Adressen etc.)
+    \end{itemize}
+    \item Welche Systeme sind involviert?
+    \begin{itemize}
+        \item Hostname, IP-Adresse, relevante Ereignisse
+    \end{itemize}
+    \item Was wurde wo gemacht?
+    \item Aufgabenübersicht
+    \begin{itemize}
+        \item Was wurde wann durch wen gemacht?
+        \item Was ist in welchem Durchführungszustand?
+        \item Priorisierung
+        \item Warum wurde die Aufgabe aufgenommen? Was ist der Hintergrund/Kontext?
+    \end{itemize}
+\end{itemize}
+
+\subsection{Nach dem Vorfall}
+\paragraph{Einführung}
+\begin{itemize}
+    \item Beschreibung des Vorfalls auf hoher Ebene
+    \item Einstufung / Kategorisierung des Vorfalls
+    \item Zeitlicher Ablauf (auf organisatorischer Ebene)
+    \item Involvierte Personen und deren Rollen / Aufgaben (Projektorganisation)
+    \item Hypothesen oder zu beantwortende Fragen
+\end{itemize}
+
+\paragraph{Lösungsansatz/ Arbeitsweise/ Vorgehen}
+\begin{itemize}
+    \item Allgemeine Beschreibung des Incident-Response-Prozesses
+    \item Eingesetzte Werkzeuge
+\end{itemize}
+
+\paragraph{Incident Response}
+\begin{itemize}
+    \item Übersicht der Massnahmen und deren Status (z. B. geplant, erledigt, abgelehnt)
+    \item Verlauf des Informationssicherheitsvorfalls
+    \begin{itemize}
+        \item Wann haben welche Personen welche Entscheidungen getroffen auf Basis welcher Informationen?
+        \item Was wurde als die nächsten Schritte festgelegt
+    \end{itemize}
+    \item Details
+\end{itemize}
+
+\paragraph{IT-Forenische Analyse}
+\begin{itemize}
+    \item Übersicht: Kernereignisse als Ablauf / Zeitstrahl mit Zeitstempel (UTC), Ereignisbeschreibung und Verweis zu den Details
+    \item Übersicht untersuchter Systeme
+    \item Pro Werkzeug, Untersuchungsschritt, Asset und/oder Artefakt die Untersuchung im Detail beschreiben
+    \item Pro Angriffsschritt die Feststellungen dokumentieren
+\end{itemize}
+
+\paragraph{Fazit}
+\begin{itemize}
+    \item Hypothesen belegen/wiederlegen basierend auf den gesammelten und analysierten Artefakten
+    \item Fragen beantworten
+    \item Empfehlungen für die Zukunft (Lessons Learned)
+\end{itemize}
+
+\paragraph{Anhang}
+\begin{itemize}
+    \item Hashes (Aller Images \& untersuchten Dateien)
+    \item IOCs (Kurzbeschreibung des IOC + Verweis auf relevantes Detailkapitel)
+    \item Screenshots \& Fotos
+    \item Kopie relevanter Formulare
+\end{itemize}
+
+\subsection{Häufige Fehler und Misskommunikation}
+\begin{itemize}
+    \item Zeitstempel ohne Kontext
+    \begin{itemize}
+        \item Auf was bezieht sich der Zeitstempel? Was ist zu diesem Zeitpunkt passiert?
+    \end{itemize}
+    \item Zeitstempel ohne Zeitzone
+    \item Vermischung von Analyseresultaten und deren Interpretation
+    \begin{itemize}
+        \item Resultat einer (forensischen) Untersuchung eines Artefakt sind für sich alleine objektiv zu beschreiben
+        \item Aussagekraft kann durch Kombination zusammenhängender Artefakte gesteigert werden
+        \item Was wurde auf einem System ausgeführt, welche Hinweise wurden entdeckt, etc.
+        \item Interpretation der Resultate im Kontext des Vorfalls / Angriffs klar vom Rest trennen und mit Wahrscheinlichkeiten arbeiten
+        \item Im Normalfall gibt es immer mehrere Erklärungen für ein Resultat!
+    \end{itemize}
+\end{itemize}
