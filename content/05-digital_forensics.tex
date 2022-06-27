@@ -21,6 +21,7 @@
         \item Wird auf dem laufenden IT-System durchgeführt
         \item Flüchtige Daten können gesammelt werden
         \item Beweissicherung kann zu unerwünschten Änderungen am System führen
+        \item Tool: \lstinline|KAPE|
     \end{itemize}
     $ $
 \end{minipage}
@@ -106,6 +107,7 @@ Damit kann gewährleistet werden, dass sich die Festplatte nicht während oder w
     \item \textbf{Wichtig}: Werkzeug für die forensische Sicherung des Arbeitsspeichers nutzen
     \begin{itemize}
         \item Sollte selbst minimalen Arbeitsspeicher einnehmen und soweit wie möglich keine Änderungen am System vornehmen
+        \item  Tool: \lstinline|volatility|
     \end{itemize}
 \end{itemize}
 
@@ -122,4 +124,34 @@ Damit kann gewährleistet werden, dass sich die Festplatte nicht während oder w
         \item Gelöschte Dateien (Recycle Bin)
     \end{itemize}
     \item Tool: \textit{KAPE}
+\end{itemize}
+
+\subsubsection{Prefetch}
+\begin{itemize}
+    \item \lstinline|C:\Windows\Prefetch\|
+    \item Proof of Execution
+    \item Remains after deletion of the Executable
+    \item Shows loaded DLLs (first 10 sec. of execution are logged)
+    \item Goal is to reduce the start time of the application
+    \item ist grundsätzlich auf Servern deaktiviert
+\end{itemize}
+
+\subsubsection{AMCache}
+\begin{itemize}
+    \item \lstinline|C:\Windows\AppCompat\Programs\|
+    \item Registry-Hive
+\end{itemize}
+
+\subsubsection{SHIMCache (AppCompatCache/ Application Compatability Cache)}
+\begin{itemize}
+    \item \lstinline|HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\AppCompatCache|
+    \item Provides compatibility for older software running in newer versions of Windows (backward compatibility)
+    \item Executable file name, file path \& timestamp are recorded (timestamp = last modification time)
+    \item Stored in the SYSTEM registry hive
+    \item Seit Win10 kann Shimcache nicht mehr genutzt werden um zu sagen, ob ein Programm ausgeführt wurde oder nicht!!
+    \begin{itemize}
+        \item Aber es kann gezeigt werden, dass ein File einmal auf dem System existiert hat oder was über ein externes Laufwerk/ UNC-Pfad angesteuert wurde
+    \end{itemize}
+    \item Only written on reboot or shutdown
+    \item Shimcache can be used to show executable files present on, or accessed via a given system
 \end{itemize}

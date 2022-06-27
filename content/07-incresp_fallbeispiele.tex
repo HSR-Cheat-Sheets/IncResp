@@ -244,11 +244,14 @@ All rootkits obey two basic principles:
     \item Journaling (NTFS nennt es \textit{Transaction Logging}, \lstinline|$LogFile|)
     \begin{itemize}
         \item Protokolliert Änderungen an den Metadaten
+        \item Tracks detailed, low-level transactional changes for NTFS
+        \item Provides file system integrity and resilience (records actual data that changed)
     \end{itemize}
     \item USN Journal / Change Journal (\lstinline|$Extend\$UsnJrnl|)
     \begin{itemize}
         \item Protokolliert Änderungen an Ordnern und Dateien
         \item Nützlich für Antivirus- und Backupsoftware
+        \item Tracks high-level changes
     \end{itemize}
     \item Access Control Lists
     \item Volume Shadow Copy
