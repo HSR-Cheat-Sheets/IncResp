@@ -1,0 +1,157 @@
+\section{Digital Forensics}
+
+\subsection{Definition}
+\begin{itemize}
+    \item Ein streng methodischer Ansatz zur Analyse von Daten
+    \item Die Untersuchung folgt einem gerichtsfestem Ansatz
+    \begin{itemize}
+        \item Die Integrität der Daten wird sichergestellt
+        \item Wissenschaftlich unvoreingenommene Analyse
+        \item Grundsätzlich sind geprüfte und akzeptierte Verfahren und Werkzeuge für die Sammlung, Aufbewahrung und Analyse im Einsatz
+        \item Die Ergebnisse müssen bei Bedarf durch Dritte nachvollzogen und reproduziert werden
+    \end{itemize}
+    \item \textbf{\textcolor{red}{Digitale Forensik ist die Sicherung, Aufbereitung und Analyse digitaler Spuren in einer Weise, die in einer späteren Gerichtsverhandlung akzeptiert wird}}
+\end{itemize}
+
+\subsection{Methoden}
+
+\begin{minipage}{0.4\linewidth}
+    \paragraph{Live-Forensik}
+    \begin{itemize}
+        \item Wird auf dem laufenden IT-System durchgeführt
+        \item Flüchtige Daten können gesammelt werden
+        \item Beweissicherung kann zu unerwünschten Änderungen am System führen
+        \item Tool: \lstinline|KAPE|
+    \end{itemize}
+    $ $
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+    \paragraph{Dead-Forensik}
+    \begin{itemize}
+        \item Wird auf dem ausgeschalteten IT-System durchgeführt
+        \item Sammlung kann ohne Änderungen an den Daten vorgenommen werden
+    \end{itemize}
+\end{minipage}
+
+\subsubsection{Live-Forensik (Online-Forensik oder Live Response)}
+\begin{itemize}
+    \item Untersuchung während der Laufzeit
+    \item Erlaubt es flüchtige Daten zu sammeln und damit diese zu untersuchen
+    \begin{itemize}
+        \item Inhalt des Arbeitsspeichers, Swap / Page Dateien
+        \item Informationen zu bestehenden Netzwerkverbindungen
+        \item Informationen zu gestarteten Prozessen
+        \item Informationen zu offene Dateien, Sockets, Pipes etc.
+        \item Angemeldete Nutzerkonten
+    \end{itemize}
+    \item Damit kann der aktuelle Laufzeitzustand des Systems festgehalten und untersucht werden (z.B. Autoruns mit KAPE)
+    \item Die Reihenfolge, in der Daten gesammelt werden, ist sehr wichtig!
+    \begin{itemize}
+        \item Je flüchtiger die Daten sind, desto schneller müssen sie angesehen werden!!!
+        \item Je schneller sich Daten ändern bzw. durch Systemaktivitäten verändert werden, desto flüchtiger sind diese
+    \end{itemize}
+    \item Daten werden in der Reihenfolge ihrer Flüchtigkeit gesammelt: Flüchtigste Daten zuerst
+    \begin{enumerate}
+        \item \textcolor{red}{Arbeitsspeicher}
+        \item \glqq Auslagerungsdateien\grqq{}: Swap / Page Datei(en)
+        \item Netzwerkstatus, Netzwerkverbindungen (Caches nicht vergessen)
+        \item Laufende Prozesse
+        \item Offene Dateien
+        \item ...
+    \end{enumerate}
+\end{itemize}
+
+\subsubsection{Dead-Forensik}
+Berühre, verändere oder modifiziere niemals etwas, bevor es nicht dokumentiert, gekennzeichnet, vermessen und fotografiert ist.
+
+\begin{itemize}
+    \item Untersuchung eines nicht aktiven Systems
+    \item Untersuchung von Daten, die nach dem deaktivieren/ausschalten eines IT-Systems zur Verfügung stehen
+    \begin{itemize}
+        \item Fokus auf die nicht-flüchtigen Datenträger
+    \end{itemize}
+    \item Findet häufig \underline{nach} einem Vorfall statt oder wenn dieser bereits lange her ist
+\end{itemize}
+
+\subsection{Datensammlung}
+\begin{itemize}
+    \item Unabhängig von der Art der Datensammlung, müssen wir zuerst grundlegende Informationen festhalten (dokumentieren!)
+    \begin{itemize}
+        \item Was wird gesammelt?, Von welchem System wird es gesammelt?
+        \item Von welchem Datenträger stammen die Daten?, Wer hat die Daten gesammelt?
+        \item Wann wurde die Datensammlung gestartet? Wann wurde sie abgeschlossen?
+        \item Was ist über das System bekannt? Systemzeit, Zeitzone des Systems etc.
+        \item Wie und mit welchen Werkzeugen wurden die Daten gesammelt?
+    \end{itemize}
+    \item \textbf{\textcolor{red}{Veränderung der Originaldaten muss zwingend vermieden werden!}}
+    \item \textbf{\textcolor{red}{Bewehrte Werkzeuge und Vorgehen verwenden (forensically sound)}}
+    \item \textbf{\textcolor{red}{Die präzise Dokumentation ist absolut zentral und notwendig}}
+\end{itemize}
+
+\subsubsection{Full Image}
+\begin{itemize}
+    \item Ein Datenträger wird vollständig kopiert (Kopie ist bitweise / sektorweise)
+    \item Damit werden auch vom System nicht genutzte Speicherbereiche, gelöschte Dateien etc. mitkopiert
+    \item Kann \underline{nicht} mit Standardwerkzeugen üblicher Betriebssystem (Windows, macOS, Linux) durchgeführt werden
+\end{itemize}
+
+Beim erstellen eines Full Image einen \textit{Write Blocker} dazwischen schliessen, dass alle Write-Befehle des Clients an die zu kopierende Festplatte geblockt werden.
+Damit kann gewährleistet werden, dass sich die Festplatte nicht während oder wegen dem kopieren ändert!
+
+\subsubsection{Memory Image}
+\begin{itemize}
+    \item Sicherung des Arbeitsspeichers
+    \begin{itemize}
+        \item In alltagstauglichen Fällen nur bei Live-Forensik
+    \end{itemize}
+    \item \textbf{Wichtig}: Werkzeug für die forensische Sicherung des Arbeitsspeichers nutzen
+    \begin{itemize}
+        \item Sollte selbst minimalen Arbeitsspeicher einnehmen und soweit wie möglich keine Änderungen am System vornehmen
+        \item  Tool: \lstinline|volatility|
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Triage Image (Triage-Forensik)}
+\begin{itemize}
+    \item Daten werden zielgerichtet gesammelt
+    \begin{itemize}
+        \item Fokus auf typischerweise forensisch relevante Dateien
+    \end{itemize}
+    \item Beispiele
+    \begin{itemize}
+        \item Historie, Cache, Favoriten, Download-Historie, Cookies etc. von Browsern
+        \item Logdateien, Registry, Prefetch, Shimcache, Amcache
+        \item Gelöschte Dateien (Recycle Bin)
+    \end{itemize}
+    \item Tool: \textit{KAPE}
+\end{itemize}
+
+\subsubsection{Prefetch}
+\begin{itemize}
+    \item \lstinline|C:\Windows\Prefetch\|
+    \item Proof of Execution
+    \item Remains after deletion of the Executable
+    \item Shows loaded DLLs (first 10 sec. of execution are logged)
+    \item Goal is to reduce the start time of the application
+    \item ist grundsätzlich auf Servern deaktiviert
+\end{itemize}
+
+\subsubsection{AMCache}
+\begin{itemize}
+    \item \lstinline|C:\Windows\AppCompat\Programs\|
+    \item Registry-Hive
+\end{itemize}
+
+\subsubsection{SHIMCache (AppCompatCache/ Application Compatability Cache)}
+\begin{itemize}
+    \item \lstinline|HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\AppCompatCache|
+    \item Provides compatibility for older software running in newer versions of Windows (backward compatibility)
+    \item Executable file name, file path \& timestamp are recorded (timestamp = last modification time)
+    \item Stored in the SYSTEM registry hive
+    \item Seit Win10 kann Shimcache nicht mehr genutzt werden um zu sagen, ob ein Programm ausgeführt wurde oder nicht!!
+    \begin{itemize}
+        \item Aber es kann gezeigt werden, dass ein File einmal auf dem System existiert hat oder was über ein externes Laufwerk/ UNC-Pfad angesteuert wurde
+    \end{itemize}
+    \item Only written on reboot or shutdown
+    \item Shimcache can be used to show executable files present on, or accessed via a given system
+\end{itemize}
