@@ -136,13 +136,14 @@ Damit kann gewährleistet werden, dass sich die Festplatte nicht während oder w
     \item ist grundsätzlich auf Servern deaktiviert
 \end{itemize}
 
-\subsubsection{AMCache}
+\subsubsection{Amcache}
 \begin{itemize}
     \item \lstinline|C:\Windows\AppCompat\Programs\|
     \item Registry-Hive
+    \item records the recent processes that were run and lists the path of the files that's executed which can then be used to find the executed program.
 \end{itemize}
 
-\subsubsection{SHIMCache (AppCompatCache/ Application Compatability Cache)}
+\subsubsection{Shimcache (AppCompatCache/ Application Compatability Cache)}
 \begin{itemize}
     \item \lstinline|HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\AppCompatCache|
     \item Provides compatibility for older software running in newer versions of Windows (backward compatibility)
@@ -154,4 +155,5 @@ Damit kann gewährleistet werden, dass sich die Festplatte nicht während oder w
     \end{itemize}
     \item Only written on reboot or shutdown
     \item Shimcache can be used to show executable files present on, or accessed via a given system
+    \item The Shimcache tracks metadata such as the full file path, last modified date, and file size but only contains the information prior to the system’s last startup, as current entries are stored only in memory
 \end{itemize}
