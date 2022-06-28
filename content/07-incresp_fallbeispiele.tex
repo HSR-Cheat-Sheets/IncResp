@@ -172,8 +172,8 @@ All rootkits obey two basic principles:
     \item Immer Dateipfade der Prozesse überprüfen $\rightarrow$ Temp Ordner deuten tendenziell auf einen Schadprozess hin
     \item Auf ähnliche Schreibweise aufpassen
     \begin{itemize}
-        \item \lstinline|winlogon $\rightarrow$ wimlogom, win1ogo, winIogon, winiogon, winl0gon|
-        \item \lstinline|lsass $\rightarrow$ isass, laass, lamss, lass, isass, Isass|
+        \item \lstinline|winlogon| $\rightarrow$ \lstinline|wimlogom, win1ogo, winIogon, winiogon, winl0gon|
+        \item \lstinline|lsass| $\rightarrow$ \lstinline|isass, laass, lamss, lass, isass, Isass|
     \end{itemize}
 \end{itemize}
 
@@ -182,7 +182,7 @@ All rootkits obey two basic principles:
     \item Was wurde infiziert/ ist betroffen
     \item Auf was hat er sich fokussiert (oft Tendenz Richtung DC)?
     \item Was hat er schon erreicht (z.B. Rechte)
-    \item Wie hat er sich verbreitet? -> IOCs/ Massnahmen
+    \item Wie hat er sich verbreitet? $\rightarrow$ IOCs/ Massnahmen
 \end{itemize}
 
 \subsection{Triage-Akquisition}
@@ -339,7 +339,7 @@ Alle Schlüssel, die als Hives gelten, beginnen mit \textit{HKEY} und befinden s
     \begin{itemize}
         \item MUA: Mail User Agent ist die Software zur Bearbeitung von E-Mails (E-Mail-Client)
         \item MDA: Mail Delivery Agent ist zuständig für die Bereitstellung der E-Mails an den MUA verantwortlich
-        \item MTA $\\leftrightarrow $ MTA, MTA $\rightarrow$ MDA und MUA $\rightarrow$  MTA meist über SMTP
+        \item MTA $\leftrightarrow $ MTA, MTA $\rightarrow$ MDA und MUA $\rightarrow$  MTA meist über SMTP
         \item MDA $\rightarrow$ MUA meist IMAP (früher POP)
     \end{itemize}
 \end{itemize}
