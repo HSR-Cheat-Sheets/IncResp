@@ -1,2 +1,34 @@
 \section{Incident Response Szenarien}
 $\rightarrow$ siehe Folien \glqq Thema 12 - IR-Szenarien\grqq
+
+\subsection{How ro React (Cookbook)}
+
+\subsubsection{Incident Type}
+\begin{itemize}
+    \item Phishing (Vishing, Spear Phishing, Whaling etc.)
+    \item Business E-Mail Compromise (BEC)
+    \item Credential Phishing
+    \item Malware Spam (Malspam)
+\end{itemize}
+
+\subsubsection{First Response}
+\begin{itemize}
+    \item Lock user account
+    \item Ask for more details (any clues, out of the ordinary)
+    \item Asses magnitude of the incident (more victims?)
+    \item Raise loglevel
+    \item Check logs on \textit{IDS/ IPS/ EDR/ XDR/ FW/ SIEM} etc.
+    \item Malware scan on machine
+    \item Isolate systems
+\end{itemize}
+
+\subsubsection{Further Steps}
+\begin{itemize}
+    \item Determine entrypoint
+    \item Fix Security issues
+    \item Setup fresh system
+    \item reactivate user accounts
+    \item Determine if data was stolen $\rightarrow$ NCSC / Data protection Officer
+    \item Modify policies if necessary
+    \item Compare hashes of malware with file
+\end{itemize}
